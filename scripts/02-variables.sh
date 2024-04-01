@@ -4,4 +4,4 @@ x=praveen
 y=kumar
 
 echo "$x: Hello $y, Good Morning"
-echi "$y: Hi $x, very good morning"
+echo "$y: Hi $x, very good morning"
