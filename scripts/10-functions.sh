@@ -14,7 +14,9 @@ VALIDATE(){
 }
 
 yum install mysql -y
+VALIDATE
 
 yum install git -y
+VALIDATE
 
 echo "This is end of the programm"
