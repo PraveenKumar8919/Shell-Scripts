@@ -15,10 +15,10 @@ VALIDATE(){
     fi
 }
 
-yum install mysql -y $LOGGFILE
+yum install mysql -y &>> $LOGGFILE
 VALIDATE $? "Installation of mysql"
 
-yum install git -y $LOGGFILE
+yum install git -y &>> $LOGGFILE
 VALIDATE $? "Installation of git"
 
 echo "This is end of the programm"
