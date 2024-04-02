@@ -3,6 +3,8 @@
 DATE=$(date)
 echo "Script executed on :: $DATE"
 
+echo "script name:: $0"
+
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
