@@ -3,6 +3,7 @@
 DATE=$(date)
 echo "Script executed on:: $DATE"
 
+ID=$(id -u)
 if [ $ID -ne 0 ]
 then
     echo "Please run the script as a root user"
