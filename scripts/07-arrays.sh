@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "this script is executed on $(DATE)"
+DATE=$(date)
+echo "this script is executed on ${DATE}"
 
 NAMES=("Praveen" "Kumar" "PNS")
 
