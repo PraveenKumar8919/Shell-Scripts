@@ -22,4 +22,14 @@ else
     echo "Installation is successfull"
 fi
 
+yum install git -y
+
+if [ $? -ne 0 ]
+then
+    echo "Installation of git is not successfull"
+    exit 1
+else
+    echo "Installation of git is successfull"
+fi
+
 echo "This is the end of the programm ::"
