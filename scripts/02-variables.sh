@@ -1,7 +1,7 @@
 #!/bin/bash
 
-x=praveen
-y=kumar
+X=praveen
+Y=kumar
 
-echo "$x: Hello $y, Good Morning"
-echo "$y: Hi $x, very good morning"
+echo "$X: Hello $Y, Good Morning"
+echo "$Y: Hi $X, very good morning"
