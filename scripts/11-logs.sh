@@ -3,17 +3,27 @@
 ID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGGFILE=/tmp/$0-$TIMESTAMP.log
-
+R="\e[31m"
+G="\e[32m"
+N="\e[33m"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "ERROR: $2....failure"
+        echo "ERROR: $2....$R failure $N"
         exit 1
     else
-        echo "$2.... sucess"
+        echo "$2.... $G sucess $N"
     fi
 }
+
+if [ ID -ne 0 ]
+then 
+    echo " $R Please run the script as root user::"
+    exit 1
+else
+    echo "you are root user"
+fi
 
 yum install mysql -y &>> $LOGGFILE
 VALIDATE $? "Installation of mysql"

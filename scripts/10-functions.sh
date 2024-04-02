@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ID=$(id -u)
 DATE=$(date)
 echo "Script executed on :: $DATE"
 
@@ -14,6 +15,14 @@ VALIDATE(){
         echo "$2.... sucess"
     fi
 }
+
+if [ ID -ne 0 ]
+then 
+    echo "Please run the script as root user::"
+    exit 1
+else
+    echo "you are root user"
+fi
 
 yum install mysql -y
 VALIDATE $? "Installation of mysql"
