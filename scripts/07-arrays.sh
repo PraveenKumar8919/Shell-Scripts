@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "this script is executed on $(DATE)"
+
 NAMES=("Praveen" "Kumar" "PNS")
 
 echo "First name in the array is: ${NAMES[0]}"
