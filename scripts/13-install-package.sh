@@ -13,4 +13,4 @@ else
     echo "You are a root user::"
 fi
 
-echo "All arguments passed $@"
+#echo "All arguments passed $@"
