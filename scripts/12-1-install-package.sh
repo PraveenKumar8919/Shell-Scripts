@@ -7,38 +7,39 @@ Y="\e[33m"
 N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
-LOGGFILE="/tmp/$0-$TIMESTAMP.log"
+LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "The script executed on $TIMESTAMP" &>> $LOGGFILE
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
-VALIDATE()
-{
+VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2.. $R ERROR $N"
+        echo -e "$2 ... $R FAILED $N"
     else
-        echo -e "$2 .. $G SUCCESS $N"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
 if [ $ID -ne 0 ]
 then
-    echo -e " $R Please run the script as a root user:: $N"
-    exit 1
+    echo -e "$R ERROR:: Please run this script with root access $N"
+    exit 1 # you can give other than 0
 else
-    echo "You are a root user::.."
-fi
+    echo "You are root user"
+fi # fi means reverse of if, indicating condition end
 
-#echo "All arguments passed $@"
+#echo "All arguments passed: $@"
+# git mysql postfix net-tools
+# package=git for first time
 
 for package in $@
 do
-    yum list installed $package &>> $LOGGFILE
-    if [ $? -ne 0 ]
+    yum list installed $package &>> $LOGFILE #check installed or not
+    if [ $? -ne 0 ] #if not installed
     then
-        yum install $package -y &>> $LOGGFILE
-        VALIDATE $? "Installation of $package"
+        yum install $package -y &>> $LOGFILE # install the package
+        VALIDATE $? "Installation of $package" # validate
     else
-        echo -e "$package is already installed.. $Y skipping package $N"
-    fi     
+        echo -e "$package is already installed ... $Y SKIPPING $N"
+    fi
 done
