@@ -27,7 +27,7 @@ then
     echo -e " $R Please run the script as a root user:: $N"
     exit 1
 else
-    echo "You are a root user::"
+    echo "You are a root user::.."
 fi
 
 #echo "All arguments passed $@"
