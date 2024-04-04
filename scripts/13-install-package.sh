@@ -6,6 +6,12 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+TIMESTAMP=$(date +%F-%H-%M-%S)
+echo "The script executed on $TIMESTAMP" &>> $TIMESTAMP
+
+LOGGFILE="/tmp/$0-$TIMESTAMP.log"
+
+
 VALIDATE()
 {
     if [ $1 -ne 0 ]
@@ -28,10 +34,10 @@ fi
 
 for package in $@
 do
-    yum list installed $package
+    yum list installed $package &>> $LOGGFILE
     if [ $? -ne 0 ]
     then
-        yum install $package -y
+        yum install $package -y &>> $LOGGFILE
         VALIDATE $? "Installation of $package"
     else
         echo -e "$package is already installed.. $Y skipping package $N"
