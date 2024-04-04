@@ -7,10 +7,9 @@ Y="\e[33m"
 N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
-echo "The script executed on $TIMESTAMP" &>> $TIMESTAMP
-
 LOGGFILE="/tmp/$0-$TIMESTAMP.log"
 
+echo "The script executed on $TIMESTAMP" &>> $LOGGFILE
 
 VALIDATE()
 {
